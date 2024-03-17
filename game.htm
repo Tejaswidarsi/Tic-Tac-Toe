@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic-Tac-Toe</title>
+    <style>
+        body {
+            background-image: url("https://img.freepik.com/free-vector/game-level-background-with-platforms-items_107791-3354.jpg?w=1380&t=st=1709996056~exp=1709996656~hmac=c02593ef9b1f160bc5137d7dc57bdb3e8971e15a920f8ccd48ec0215e6b7b524");
+            text-align: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+        table{
+            border: 1px solid transparent;
+            border-radius: 20px;
+            margin-top: 180px;
+            margin-left: 580px;
+           
+            width: 300px;
+            background-color: #5d53ec;
+            
+        }
+        input {
+            height: 50px;
+            width: 60px;
+            color: black;
+            background-image: url("https://files.123freevectors.com/wp-content/original/162950-red-and-yellow-water-color-background.jpg");
+            border-radius: 15px;
+            object-position: 0;
+        }
+        h1{
+            text-shadow: 30px;
+            color: #ffd700;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="font-family: cursive; ">Tic-Tac-Toe</h1>
+  
+        <table >
+        <form>
+            <tr>
+           <td><input type="button" id="1" onclick="play(id)"></td> 
+            <td><input type="button" id="2" onclick="play(id)"></td>
+            <Td><input type="button" id="3" onclick="play(id)"> </Td> 
+            <td><input type="button" id="4" onclick="play(id)"></td>
+        </tr>
+        <TR>
+            <td><input type="button" id="5" onclick="play(id)"></td>   
+            <td><input type="button" id="6" onclick="play(id)"></td>
+            <td><input type="button" id="7" onclick="play(id)"></td>  
+            <td><input type="button" id="8" onclick="play(id)"></td>
+        </tr>
+        <Tr>  <td><input type="button" id="9" onclick="play(id)"></td> 
+            <td><input type="button" id="10" onclick="play(id)"></td>
+            <Td><input type="button" id="11" onclick="play(id)"> </Td> 
+            <td><input type="button" id="12" onclick="play(id)"></td>
+        <tr>
+            <td><input type="button" id="13" onclick="play(id)"></td> 
+            <td><input type="button" id="14" onclick="play(id)"></td>
+            <Td><input type="button" id="15" onclick="play(id)"> </Td> 
+            <td><input type="button" id="16" onclick="play(id)"></td>
+        </tr>
+        </form>
+    </table>
+    </div>
+
+    <script>
+        var i = 0;
+        var p1 = 0;
+        var p2 = 0;
+          if(i==0)
+          {
+            a=prompt("Enter Payer1 name:");
+            b=prompt("Enter Payer2 name:");
+          }
+        function play(id) {
+            var cell = document.getElementById(id);
+            if (cell.value === "") {
+                if (i % 2 === 0) {
+                    cell.value = "O";
+                } else {
+                    cell.value = "X";
+                }
+                i++;
+            } else {
+                alert("Already filled!");
+            }
+            check();
+        }
+
+        function check() {
+            const winningCombinations = [
+                [1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16], // Horizontal
+                [1, 5, 9, 13], [2, 6, 10, 14], [3, 7, 11, 15], [4, 8, 12, 16], // Vertical
+                [1, 6, 11, 16], [4, 7, 10, 13] // Diagonal
+            ];
+
+            for (const combination of winningCombinations) {
+                const [a, b, c, d] = combination;
+                const cellA = document.getElementById(a).value;
+                const cellB = document.getElementById(b).value;
+                const cellC = document.getElementById(c).value;
+                const cellD = document.getElementById(d).value;
+
+                if (cellA !== "" && cellA === cellB && cellB === cellC && cellC === cellD) {
+                    alert("Success! Player " + cellA + " wins!");
+                    return;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
